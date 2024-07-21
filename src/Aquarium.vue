@@ -1,11 +1,16 @@
 <script setup>
-
 import Fish from "@/Fish.vue";
+
+defineProps(['fishInTheAquarium', 'fishWidth'])
 </script>
 
 <template>
   <div class="aquarium">
-    <Fish />
+    <Fish
+      v-for="(fish, key) in fishInTheAquarium"
+      :key="key"
+      :fish="fish"
+    />
   </div>
 </template>
 

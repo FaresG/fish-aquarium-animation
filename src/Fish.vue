@@ -1,10 +1,19 @@
 <script setup>
-import { computed, ref } from "vue";
+import {computed, onMounted, ref} from "vue";
 
-const fishWidth = 120
+const props = defineProps({
+  fish: {
+    type: Object,
+    required: true
+  }
+})
+
+onMounted(() => {
+  console.log(props.fish)
+})
 // Assume that it will never start with 0, 0 coords
-const xPosition = ref(0)
-const yPosition = ref(20)
+const xPosition = ref(props.fish?.xPosition)
+const yPosition = ref(props.fish?.yPosition)
 const positionStyle = computed(() => {
   return `top: ${yPosition.value}%; left: ${xPosition.value}%;`
 })
@@ -45,24 +54,10 @@ setInterval(() => {
 </script>
 
 <template>
-  <Transition>
-    <img
-        src="../public/golden-purple-fish.png"
-        alt="goldfish"
-        :class="`w-[${fishWidth}px] absolute`"
-        :style="positionStyle"
-    />
-  </Transition>
+  <img
+      :src="`../public/${fish.image}`"
+      :alt="fish.name"
+      :class="`w-[${fish.fishWidth}px] absolute`"
+      :style="positionStyle"
+  />
 </template>
-
-<style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
