@@ -46,9 +46,9 @@ const resetForm = () => {
     <img
       v-for="fishImg in fishImages"
       :src="`../public/${fishImg}.png`"
-      alt="{{ fishImg }}"
-      class="w-[120px] hover:cursor-pointer border border-transparent hover:border-blue-400"
-      :class="{'border-blue-400': fishImg === selectedFishImg}"
+      :alt="fishImg"
+      class="w-[120px] hover:cursor-pointer border-2"
+      :class="[fishImg === selectedFishImg ? 'border-blue-400' : 'border-transparent']"
       @click="selectedFishImg = fishImg"
     />
   </div>
@@ -59,6 +59,7 @@ const resetForm = () => {
       placeholder="Type fish name"
       ref="fishName"
   />
+
   <button
       class="w-full py-5 text-center text-3xl bg-red-600 border rounded border-red-600 hover:opacity-80"
       @click="addFish"
