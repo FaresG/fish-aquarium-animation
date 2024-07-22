@@ -1,7 +1,6 @@
 <script setup>
 import {reactive, ref} from "vue";
 
-const props = defineProps(['fishWidth'])
 const emit = defineEmits(['newFish'])
 const fishImages= [
     'golden-purple-fish',

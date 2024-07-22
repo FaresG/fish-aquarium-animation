@@ -1,7 +1,7 @@
 <script setup>
 import Fish from "@/Fish.vue";
 
-defineProps(['fishInTheAquarium', 'fishWidth'])
+defineProps(['fishInTheAquarium'])
 </script>
 
 <template>
@@ -17,7 +17,7 @@ defineProps(['fishInTheAquarium', 'fishWidth'])
 <style scoped>
 
 .aquarium {
-  @apply w-full h-full bg-center bg-no-repeat relative;
+  @apply w-full h-full bg-center bg-no-repeat relative overflow-hidden;
   background-image: url('/bg.jpg');
 }
 </style>
