@@ -18,6 +18,6 @@ defineProps(['fishInTheAquarium', 'fishWidth'])
 
 .aquarium {
   @apply w-full h-full bg-center bg-no-repeat relative;
-  background-image: url('../public/bg.jpg');
+  background-image: url('/bg.jpg');
 }
 </style>

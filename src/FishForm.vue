@@ -24,9 +24,8 @@ const addFish = () => {
   if (!fishName.value.value || !selectedFishImg.value) return
 
   fish.name = fishName.value.value
-  fish.xPosition = Math.random() * 100
-  fish.yPosition = Math.random() * 100
-  fish.fishWidth = props.fishWidth
+  fish.xPosition = Math.round(Math.random() * 100)
+  fish.yPosition = Math.round(Math.random() * 100)
   fish.image = selectedFishImg.value
 
   emit('newFish', fish)
@@ -45,7 +44,7 @@ const resetForm = () => {
   <div class="flex gap-2 flex-wrap">
     <img
       v-for="fishImg in fishImages"
-      :src="`../public/${fishImg}.png`"
+      :src="`/${fishImg}.png`"
       :alt="fishImg"
       class="w-[120px] hover:cursor-pointer border-2"
       :class="[fishImg === selectedFishImg ? 'border-blue-400' : 'border-transparent']"

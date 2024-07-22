@@ -8,7 +8,15 @@ const fishInTheAquarium = ref([])
 const fishWidth = 120
 const addNewFish = (newFish) => {
   if (newFish.name)
-  fishInTheAquarium.value.push(newFish)
+  fishInTheAquarium.value.push({
+
+    name: newFish.name,
+    isHungry: false,
+    xPosition: newFish.xPosition,
+    yPosition: newFish.yPosition,
+    fishWidth: fishWidth,
+    image: newFish.image
+  })
 }
 </script>
 

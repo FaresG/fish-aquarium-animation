@@ -1,5 +1,5 @@
 <script setup>
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 
 const props = defineProps({
   fish: {
@@ -8,9 +8,6 @@ const props = defineProps({
   }
 })
 
-onMounted(() => {
-  console.log(props.fish)
-})
 // Assume that it will never start with 0, 0 coords
 const xPosition = ref(props.fish?.xPosition)
 const yPosition = ref(props.fish?.yPosition)
@@ -55,7 +52,7 @@ setInterval(() => {
 
 <template>
   <img
-      :src="`../public/${fish.image}`"
+      :src="`/${fish.image}.png`"
       :alt="fish.name"
       :class="`w-[${fish.fishWidth}px] absolute`"
       :style="positionStyle"
