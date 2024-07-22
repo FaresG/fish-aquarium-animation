@@ -1,5 +1,4 @@
 <script setup>
-
 import FishForm from "@/FishForm.vue";
 import Aquarium from "@/Aquarium.vue";
 import {ref} from "vue";
@@ -7,16 +6,25 @@ import {ref} from "vue";
 const fishInTheAquarium = ref([])
 const fishWidth = 120
 const addNewFish = (newFish) => {
-  if (newFish.name)
-  fishInTheAquarium.value.push({
+  newFish.id = fishInTheAquarium.value.length + 1
+  newFish.xPosition = Math.round(Math.random() * 100)
+  newFish.yPosition = Math.round(Math.random() * 100)
+  newFish.fishWidth = fishWidth
 
+  fishInTheAquarium.value.push({
+    id: newFish.id,
     name: newFish.name,
-    isHungry: false,
     xPosition: newFish.xPosition,
     yPosition: newFish.yPosition,
-    fishWidth: fishWidth,
+    fishWidth: newFish.fishWidth,
+    isHungry: newFish.isHungry,
     image: newFish.image
   })
+}
+const removeFish = (deadFishId) => {
+  setTimeout(() => {
+    fishInTheAquarium.value = fishInTheAquarium.value.filter((fish) => fish.id !== deadFishId)
+  }, 3000)
 }
 </script>
 
@@ -26,7 +34,10 @@ const addNewFish = (newFish) => {
     <FishForm  @new-fish="addNewFish"/>
   </div>
   <div class="basis-3/4">
-    <Aquarium :fish-in-the-aquarium="fishInTheAquarium"/>
+    <Aquarium
+        :fish-in-the-aquarium="fishInTheAquarium"
+        @dead-fish="removeFish"
+    />
   </div>
 </div>
 </template>

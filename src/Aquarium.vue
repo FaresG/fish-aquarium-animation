@@ -2,14 +2,16 @@
 import Fish from "@/Fish.vue";
 
 defineProps(['fishInTheAquarium'])
+defineEmits(['deadFish'])
 </script>
 
 <template>
   <div class="aquarium">
     <Fish
-      v-for="(fish, key) in fishInTheAquarium"
-      :key="key"
+      v-for="fish in fishInTheAquarium"
+      :key="fish?.id"
       :fish="fish"
+      @fish-dead="(deadFishId) => $emit('deadFish', deadFishId)"
     />
   </div>
 </template>

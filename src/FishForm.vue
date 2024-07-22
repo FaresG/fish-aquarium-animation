@@ -10,6 +10,7 @@ const fishImages= [
     'tuna'
 ]
 const fish = reactive({
+  id: 0,
   name: '',
   isHungry: false,
   xPosition: 0,
@@ -23,8 +24,6 @@ const addFish = () => {
   if (!fishName.value.value || !selectedFishImg.value) return
 
   fish.name = fishName.value.value
-  fish.xPosition = Math.round(Math.random() * 100)
-  fish.yPosition = Math.round(Math.random() * 100)
   fish.image = selectedFishImg.value
 
   emit('newFish', fish)
